@@ -2,6 +2,8 @@
 
 # Nothing Phone (3a) Pro — LineageOS, microG & Aurora
 
+[![Project validation](https://github.com/YZUe1980/nothing-phone-3a-pro-lineageos-google-free-aurora/actions/workflows/validate.yml/badge.svg)](https://github.com/YZUe1980/nothing-phone-3a-pro-lineageos-google-free-aurora/actions/workflows/validate.yml)
+
 **Your phone. Your apps. Your choice.**
 
 [Deutsch](README.md) · [Build guide](docs/BUILD.md) · [Device status](docs/STATUS.md) · [Contribute](CONTRIBUTING.md)
@@ -56,3 +58,5 @@ Useful contributions include reviewing device changes, documenting reproducible 
 This project builds on [LineageOS](https://github.com/LineageOS), [NullDebris's device and kernel work](https://github.com/NullDebris), [LineageOS for microG's build tooling](https://github.com/lineageos4microg/docker-lineage-cicd), [microG](https://microg.org/), [F-Droid](https://f-droid.org/), [Aurora Store](https://gitlab.com/AuroraOSS/AuroraStore) and [Magisk](https://github.com/topjohnwu/Magisk). The original device-tree contributors retain their credits in the upstream sources.
 
 New scripts and documentation in this repository are licensed under [Apache-2.0](LICENSE). Upstream software and proprietary hardware files retain their own licenses; see [third-party notes](docs/THIRD_PARTY.md). This is an independent community project, unaffiliated with Nothing or the LineageOS project.
+
+GitHub Actions validates scripts and manifests on changes. The full Android build currently runs on the development machine. [CI details](docs/CI.md).

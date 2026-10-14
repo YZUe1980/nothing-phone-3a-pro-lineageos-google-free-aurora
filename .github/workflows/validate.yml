@@ -1,0 +1,43 @@
+name: Validate project
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Scripts and source manifests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Check out project
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Check Bash syntax
+        run: |
+          for file in scripts/*.sh userscripts/*.sh; do
+            bash -n "$file"
+          done
+
+      - name: Check tracked files and source revisions
+        run: python3 scripts/check-publication.py
+
+      - name: Preview pinned and tracking builds
+        run: |
+          ./scripts/build.sh --dry-run
+          SOURCE_MODE=tracking ./scripts/build.sh --dry-run
+          test ! -e build-data
+
+      - name: Check whitespace
+        run: git show --format= --check HEAD
