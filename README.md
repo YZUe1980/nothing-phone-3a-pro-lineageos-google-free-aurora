@@ -10,14 +10,14 @@
 
 Wir entwickeln eine inoffizielle **LineageOS-23.2-Version für das Nothing Phone (3a) Pro** mit **microG, F-Droid und Aurora Store**. Unsere Build-Konfiguration, Quellenstände und Testergebnisse werden öffentlich, damit andere die Arbeit nachvollziehen und verbessern können.
 
-**Entwicklungsstand: Der erste ROM-Bau ist erfolgreich abgeschlossen. Installation und Gerätetests laufen; eine getestete ROM-Veröffentlichung gibt es bisher nicht.**
+**Entwicklungsstand: Die ROM läuft auf unserem A059P: Android 16, Kernel 6.6, Verschlüsselung und Magisk-Root sind geprüft. Weitere Gerätetests stehen aus; eine öffentliche ROM-Veröffentlichung gibt es bisher nicht.**
 
 ## Was das Projekt ausmacht
 
 - **Weniger vorinstallierte Google-Software:** microG ersetzt die proprietären Google Play-Dienste.
 - **Apps nach eigener Wahl:** F-Droid und Aurora Store sind in der Build-Konfiguration enthalten.
 - **Nachvollziehbare Entwicklung:** feste Quellenstände, offene Skripte und dokumentierte Tests.
-- **Optionales Root:** Magisk wird erst nach einem erfolgreichen Start der unveränderten ROM geprüft.
+- **Optionales Root:** Magisk 30.7 wurde nach dem ersten Start installiert und mit einem Root-Aufruf geprüft.
 - **Gemeinsam verbessern:** Fehlerberichte und Beiträge sammeln wir zunächst direkt auf GitHub.
 
 ## Was „Google free“ hier bedeutet
@@ -28,7 +28,7 @@ Außerdem benötigt das Gerät proprietäre Treiber- und Firmwarebestandteile. *
 
 ## So geht es weiter
 
-Zuerst schließen wir den Bau ab und prüfen seine Dateien. Danach testen wir Installation und Start auf dem **A059P**, einschließlich des Wechsels von Kernel 6.1 auf 6.6. Anschließend folgen Telefonie, Kameras, Verbindungen, microG und Root. Erst die Ergebnisse begründen eine getestete Veröffentlichung und eine bestätigte Installationsanleitung.
+Bau, Installation und Start auf dem **A059P** sind erfolgreich, einschließlich des Wechsels von Kernel 6.1 auf 6.6. Der [Installationsbericht](docs/INSTALLATION.md) hält den bestätigten Ablauf und seine Besonderheiten fest. Als Nächstes folgen Telefonie, Kameras, Verbindungen und die Funktionen von microG und den App-Stores. Diese Tests stehen vor einer alltagstauglich getesteten Veröffentlichung.
 
 Der [Statusbericht](docs/STATUS.md) zeigt, was erledigt ist und welche Prüfungen noch ausstehen. Mit der [Bauanleitung](docs/BUILD.md) lässt sich der Entwicklungsstand untersuchen; der neue Wrapper ist noch nicht durch einen vollständigen frischen Bau bestätigt.
 

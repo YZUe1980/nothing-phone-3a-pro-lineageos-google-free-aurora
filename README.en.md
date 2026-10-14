@@ -10,7 +10,7 @@
 
 An open development project for an unofficial **LineageOS 23.2** build for the **Nothing Phone (3a) Pro**, combining **microG**, **F-Droid** and **Aurora Store**. We publish the build recipe, source revisions and test results so others can inspect the work and help improve it.
 
-**Development preview — the first ROM build completed successfully. Installation and device validation are in progress. No tested ROM release is available yet.**
+**Development preview — the ROM boots on our A059P with Android 16 and kernel 6.6. Encryption, SELinux Enforcing and Magisk root are verified. Broader hardware validation is pending; no public ROM release is available yet.**
 
 ## What we are building
 
@@ -20,7 +20,7 @@ An open development project for an unofficial **LineageOS 23.2** build for the *
 | Android | LineageOS 23.2 with the device maintainer's Linux 6.6 trees |
 | Compatibility | microG in place of bundled proprietary Google Play Services |
 | Apps | F-Droid and Aurora Store included in the build configuration |
-| Root | Optional Magisk; validated separately after an unmodified first boot |
+| Root | Magisk 30.7 verified after an unmodified first boot |
 | Development | Public manifests, scripts, findings and issue tracking |
 
 ## “Google free” — with a clear meaning
@@ -31,10 +31,7 @@ The build also needs proprietary hardware support files. **This repository is op
 
 ## Follow the work
 
-1. Build and inspect the ROM artifacts.
-2. Validate installation on the A059P test device, including the kernel 6.1 → 6.6 transition.
-3. Test boot, radio, calls, cameras, connectivity, microG and optional root.
-4. Publish the results and a verified installation procedure before a tested release.
+Build, installation, the kernel 6.1 → 6.6 transition, boot and optional root have passed on the A059P test phone. See the [installation record](docs/INSTALLATION.md). Calls, cameras, connectivity, microG self-check and store downloads remain to be tested before a broadly validated release.
 
 The [status page](docs/STATUS.md) separates completed preparation from checks that have not run yet. A successful compilation alone does not establish device compatibility.
 

@@ -28,4 +28,4 @@ The original ROM build completed successfully on 2026-10-14 after 170,777 steps 
 | `init_boot.img`, before Magisk | `572a2634d2f8b2eaeaae2fc7d08d13d73f9c68c80c243ea802a52cab68696bf4` |
 | `recovery.img` | `995a745e2ab8311e7017f7344733f45d8926497ff078b082c003762131c3db0e` |
 
-The extracted boot kernel identifies itself as `6.6.114-android15-8-4k-g804d18139214`. The target-files contain GmsCore, FakeStore, F-Droid, its privileged extension and Aurora Store. All 22 radio/firmware inputs match the checksum-verified original firmware baseline byte for byte. These findings verify build inputs and outputs, not successful boot or radio operation.
+The extracted boot kernel identifies itself as `6.6.114-android15-8-4k-g804d18139214`. The target-files contain GmsCore, FakeStore, F-Droid, its privileged extension and Aurora Store. All 22 radio/firmware inputs match the checksum-verified original firmware baseline byte for byte. The installed system subsequently completed Android boot with this kernel, active file encryption and SELinux Enforcing. Magisk 30.7 root was verified separately. Radio operation remains untested. See the installation and status records.
