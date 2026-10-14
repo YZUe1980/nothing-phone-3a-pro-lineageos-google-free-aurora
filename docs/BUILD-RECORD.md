@@ -19,4 +19,13 @@ The existing build resumes an initialized source tree with `CALL_REPO_INIT=false
 
 The container modifies the checked-out source during preparation, including signing/package entries and a microG overlay in `vendor/lineage`, version filtering, the optional property-service compatibility patch and a fastboot lock-state adjustment. A manifest alone does not describe those working-tree changes; the fixed builder image and runtime-patch check are part of this recipe.
 
-At initial publication the ROM build and hardware validation are still in progress. ROM artifact hashes and an installation result will be recorded only when the corresponding steps have completed.
+The original ROM build completed successfully on 2026-10-14 after 170,777 steps (reported build duration 03:16:56); the builder exited with status 0. All emitted artifact checksums passed. Hardware validation remains in progress.
+
+| Built artifact | SHA-256 |
+| --- | --- |
+| `lineage-23.2-20261014-UNOFFICIAL-asteroids.zip` | `7915bbdd59b31bfcbafd1892b561232b1af8b5d5a3027e375f560429520a890e` |
+| `boot.img` | `9f8e57cd94cd2dd2471286762616bcfd80b2d7c35dde60ff8f1f1e02c63a1736` |
+| `init_boot.img`, before Magisk | `572a2634d2f8b2eaeaae2fc7d08d13d73f9c68c80c243ea802a52cab68696bf4` |
+| `recovery.img` | `995a745e2ab8311e7017f7344733f45d8926497ff078b082c003762131c3db0e` |
+
+The extracted boot kernel identifies itself as `6.6.114-android15-8-4k-g804d18139214`. The target-files contain GmsCore, FakeStore, F-Droid, its privileged extension and Aurora Store. All 22 radio/firmware inputs match the checksum-verified original firmware baseline byte for byte. These findings verify build inputs and outputs, not successful boot or radio operation.

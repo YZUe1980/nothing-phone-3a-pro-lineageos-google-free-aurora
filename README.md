@@ -10,7 +10,7 @@
 
 Wir entwickeln eine inoffizielle **LineageOS-23.2-Version für das Nothing Phone (3a) Pro** mit **microG, F-Droid und Aurora Store**. Unsere Build-Konfiguration, Quellenstände und Testergebnisse werden öffentlich, damit andere die Arbeit nachvollziehen und verbessern können.
 
-**Entwicklungsstand: Der erste Bau und die Gerätetests laufen noch. Eine getestete ROM-Veröffentlichung gibt es bisher nicht.**
+**Entwicklungsstand: Der erste ROM-Bau ist erfolgreich abgeschlossen. Installation und Gerätetests laufen; eine getestete ROM-Veröffentlichung gibt es bisher nicht.**
 
 ## Was das Projekt ausmacht
 

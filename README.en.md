@@ -10,7 +10,7 @@
 
 An open development project for an unofficial **LineageOS 23.2** build for the **Nothing Phone (3a) Pro**, combining **microG**, **F-Droid** and **Aurora Store**. We publish the build recipe, source revisions and test results so others can inspect the work and help improve it.
 
-**Development preview — the first build and device validation are still in progress. No tested ROM release is available yet.**
+**Development preview — the first ROM build completed successfully. Installation and device validation are in progress. No tested ROM release is available yet.**
 
 ## What we are building
 
