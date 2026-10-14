@@ -10,6 +10,7 @@ Initial status: **2026-10-14**. This page is updated at meaningful milestones, n
 | Original-firmware preparation | All 38 extracted original images passed their published SHA-256 checks locally |
 | First ROM compilation | In progress |
 | Wrapper checks | Bash syntax, pinned/tracking dry runs and tracked-file/manifest checks passed; full fresh build not yet tested |
+| GitHub Actions | [First hosted validation passed](https://github.com/YZUe1980/nothing-phone-3a-pro-lineageos-google-free-aurora/actions/runs/38529313542); standard Ubuntu runner |
 | Clean installation | Not yet tested |
 | First boot and encryption | Not yet tested |
 | Calls, SMS, mobile data / IMS | Not yet tested |
