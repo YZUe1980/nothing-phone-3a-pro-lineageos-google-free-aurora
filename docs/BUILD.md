@@ -1,0 +1,59 @@
+# Building the development version
+
+This is a documented development recipe. The first ROM build predates this wrapper; a complete fresh build using the wrapper is still unverified. Nothing here flashes a connected phone automatically.
+
+## Prerequisites
+
+Use Linux with Docker, Bash, curl, Git, Python 3 and GNU coreutils. A full Android source checkout needs substantial SSD storage. Our first build uses a 12-thread Ryzen 7600X, 30 GiB RAM, an additional 40 GiB swap file, eight parallel jobs and a 50 GiB compiler cache. It started with about 480 GiB free disk space. These are observed development conditions, not a tested minimum specification. The source-generation phase previously exceeded the available physical RAM.
+
+## Source selection
+
+`SOURCE_MODE=pinned` is the default. It initializes a fresh checkout from `manifests/build-2026-10-14.xml`, which records 1,174 project commit IDs exported from the first build. Its GitHub remote is made explicit and an unused remote was removed; project revisions are unchanged. The wrapper refuses an existing checkout without its matching initialization marker.
+
+`SOURCE_MODE=tracking` uses LineageOS's current `lineage-23.2` manifest plus `manifests/tracking/asteroids.xml`. Device and kernel trees follow NullDebris's `6.6/lineage-23.2` branches. Tracking builds can change when upstream changes.
+
+The container is fixed to:
+
+```text
+lineageos4microg/docker-lineage-cicd@sha256:c2591e263815182f1d8469bda40708297d5a28d024ad664bae08bf96bfd9d3fa
+```
+
+Pinned source commits do not establish bit-for-bit reproducible binaries. Signing keys, timestamps, runtime downloads and the host environment still matter. The optional runtime Play Integrity patch is checked against the SHA-256 recorded in [BUILD-RECORD.md](BUILD-RECORD.md); a change stops the wrapper build for review.
+
+## Commands
+
+```bash
+./scripts/build.sh --dry-run
+BUILD_ROOT=/path/to/dedicated/build-data ./scripts/build.sh
+```
+
+`--dry-run` prints commands without downloading, creating directories or starting Docker. To follow upstream branches instead:
+
+```bash
+SOURCE_MODE=tracking BUILD_ROOT=/path/to/another/build-data ./scripts/build.sh
+```
+
+The default output directory is `build-data/` inside the checkout and is Git-ignored. Choose a fresh dedicated directory; do not point the wrapper at another running build. The default container name is `asteroids-microg-build`. An existing container with that name must be deliberately resumed or removed by its operator before creating another.
+
+Aurora Store 4.8.4 / version code 76 is downloaded from F-Droid by `prepare-deps.sh`. Its SHA-256 must match the recorded build before it enters the source tree. The APK is not committed to this repository. Its original signature is preserved by `android_app_import`.
+
+## Settings
+
+`config/build.env.example` records the initial build settings. For local changes, copy it to the ignored `config/build.env` and select it:
+
+```bash
+cp config/build.env.example config/build.env
+BUILD_ENV="$PWD/config/build.env" ./scripts/build.sh --dry-run
+```
+
+`WITH_GMS=true` is the builder's variable name. Here, `vendor/partner_gms` is explicitly the **lineageos4microg** repository, whose package list selects microG, FakeStore, F-Droid and its privileged extension. This is not a bundle of proprietary Google Play Services. `INCLUDE_PROPRIETARY=false` prevents automatic TheMuppets manifest inclusion; the device-specific vendor repository is still required and contains proprietary hardware files.
+
+`BUILD_TYPE=userdebug` and `APPLY_PI_PATCH=true` reproduce the initial development configuration. The latter requests an upstream compatibility patch and does not promise Play Integrity, banking or DRM compatibility. `SIGNATURE_SPOOFING=no` is also the recorded setting; microG's actual self-check remains a device-validation item. Change these options deliberately and record the resulting build separately.
+
+## Outputs and signing
+
+The builder writes artifacts under `BUILD_ROOT/zips/asteroids/` and logs under `BUILD_ROOT/logs/asteroids/`. `CLEAN_AFTER_BUILD=false` retains target-files under the source checkout for inspection. Image filenames include the Lineage version, date, release type and codename; do not assume they are simply named `boot.img`.
+
+`SIGN_BUILDS=true` uses locally generated keys under `BUILD_ROOT/keys/`. Keep an offline backup: losing these keys prevents signing updates compatible with the same installation. Never commit the keys or upload the build-data directory. This repository's publication check complements its `.gitignore` by inspecting tracked files before publication.
+
+See [INSTALLATION.md](INSTALLATION.md) for the current installation-validation boundary.
